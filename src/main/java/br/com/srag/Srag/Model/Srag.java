@@ -49,38 +49,71 @@ public class Srag {
 	private String id_pais;
 	private double co_pais;
 	private String surto_sg;
-	private String nosocomial;
-	private String av_suino;
+	private double nosocomial;
+	private double ave_suino;
 	private String out_anim;
-	private String febre;
-	private String tosse;
-	private String garganta;
-	private String dispineia;
-	private String desc_resp;
-	private String saturacao;
-	private String diarreia;
-	private String vomito;
+	private double febre;
+	private double  tosse;
+	private double garganta;
+	private double dispneia;
+	private double desc_resp;
+	private double saturacao;
+	private double diarreia;
+	private double vomito;
+	private double outro_sin;
+	private String outro_des;
+	private double puerpera;
+	private double fator_risc;
+	private double cardiopati;
+	private double hematologi;
+	private double sind_down;
+	private double hepatica;
+	private double asma;
+	private double diabetes;
+	private double neurologic;
+	private double pneumopati;
+	private double imunodepre;
+	private double renal;
+	private double obsidade;
+	private double obes_imc;
+	private double out_morbi;
+	private double vacina;
+	private Object dt_ut_dose;
+	private double mae_vac;
+	private Object dt_vac_mae;
+	private double mae_amamenta;
+	private Object dt_doseuni;
+	private Object dt_1_dose;
+	private Object dt_2_dose;
+	private double antiviral;
+	private double tp_antivir;
+	private String out_antiv;
+	private Object dt_antivir;
+	private double hospital;
+	private Object dt_interna;
+	private String sg_uf_inte;
+	private String id_rg_inte;
+	private double co_rg_inte;
+	private String id_mn_inte;
+	private double co_mu_inte; //BW
+	private double uti;
+	private Object dt_entuti;
+	private Object dt_saidauti;
+	private double suport_ven;
+	private double raiox_res;
+	private String raiox_out;
+	private Object dt_raiox; // CD
+	private double amostra;
+	private Object dt_coleta;
+	private double tp_amostra;
+	private String out_amost; //CH
+	
+	
+	/* */
 	private String dor_abd;
 	private String fadiga;
 	private String perd_olft;
 	private String perd_pala;
-	private String outro_sin;
-	private String outro_des;
-	private String fator_risc;
-	private String puerpera;
-	private String cardiopati;
-	private String hematologi;
-	private String sind_down;
-	private String hepatica;
-	private String asma;
-	private String diabetes;
-	private String neurologic;
-	private String pneumopati;
-	private String imunodepre;
-	private String renal;
-	private String obsidade;
-	private String obes_imc;
-	private String out_morbi;
 	private String morbi_desc;
 	private String vacina_cov;
 	private Date dose_1_cov;
@@ -93,38 +126,11 @@ public class Srag {
 	private String lote_2_cov;
 	private String lote_ref;
 	private String fnt_in_cov;
-	private String vacina;
-	private Date dt_ut_dose;
-	private String mae_vac;
-	private Date dt_vac_mae;
-	private String mae_amamenta;
-	private Date dt_doseuni;
-	private Date dt_1_dose;
-	private Date dt_2_dose;
-	private String antiviral;
-	private String tp_antivir;
-	private String out_antiv;
-	private Date dt_antivir;
-	private String Hospital;
-	private Date dt_interna;
-	private String sg_uf_inte;
-	private String id_rg_inte;
-	private String id_mn_inte;
 	private String id_un_inte;
-	private String uti;
-	private Date dt_entuti;
-	private Date dt_saidauti;
-	private String suport_ven;
-	private String raiox_res;
-	private String raiox_out;
-	private Date dt_raiox;
 	private int tomo_res;
 	private String tomo_out;
 	private Date dt_tomo;
-	private String amostra;
-	private Date dt_coleta;
-	private String tp_amostra;
-	private String out_amost;
+	
 	private int requi_gal;
 	private int tp_tes_an;
 	private Date dt_res_an;
@@ -184,8 +190,9 @@ public class Srag {
 	private String observa;
 	private String nome_prof;
 	private String reg_prof;
-	private Date dt_digita;
-	
+	private Object dt_digita;
+
+	/**/
 	public Srag(Date dt_notific 
 				,double sem_not
 				,Date dt_sin_pri
@@ -211,9 +218,70 @@ public class Srag {
 				,String id_rg_resi
 				,double co_rg_resi
 				,String id_mn_resi
-				,double co_mun_res // 25
+				,double co_mun_res 
 				,double cs_zona
 				,String surto_sg
+				,double nosocomial
+				,double ave_suino
+				,double febre
+				,double tosse
+				,double garganta
+				,double dispneia
+				,double desc_resp
+				,double saturacao
+				,double diarreia
+				,double vomito
+				,double outro_sin
+				,String outro_des
+				,double puerpera
+				,double fator_risc
+				,double cardiopati
+				,double hematologi
+				,double sind_down
+				,double hepatica
+				,double asma
+				,double diabetes
+				,double neurologic
+				,double pneumopati
+				,double imunodepre
+				,double renal
+				,double obsidade
+				,double obes_imc
+				,double out_morbi
+				,String morbi_desc
+				,double vacina
+				,Object dt_ut_dose
+				,double mae_vac
+				,Object dt_vac_mae
+				,double mae_amamenta
+				,Object dt_doseuni
+				,Object dt_1_dose
+				,Object dt_2_dose
+				,double antiviral
+				,double tp_antivir
+				,String out_antiv
+				,Object dt_antivir
+				,double hospital
+				,Object dt_interna
+				,String sg_uf_inte
+				,String id_rg_inte
+				,double co_rg_inte
+				,String id_mn_inte
+				,double co_mu_inte
+				,double uti
+				,Object dt_entuti
+				,Object dt_saidauti
+				,double suport_ven
+				,double raiox_res
+				,String raiox_out
+				,Object dt_raiox
+				,double amostra
+				,Object dt_coleta
+				,double tp_amostra
+				,String out_amost
+				
+								
+				/* */
 			) {
 		super();
 		//this.nu_notific = nu_notific;
@@ -245,54 +313,20 @@ public class Srag {
 		this.co_mun_res = co_mun_res;
 		this.cs_zona = cs_zona;
 		this.surto_sg = surto_sg;
-		/*
-		this.tem_cpf = tem_cpf;
-		this.nu_cpf = nu_cpf;
-		this.estrang = estrang;
-		this.nu_cns = nu_cns;
-		this.nm_pacient = nm_pacient;
-
-
-	
-
-
-
-		this.cs_etnia = cs_etnia;
-		this.pov_ct = pov_ct;
-		this.tp_pov_ct = tp_pov_ct;
-
-		this.pac_cocbo = pac_cocbo;
-		this.nm_mae_pac = nm_mae_pac;
-		this.nu_cep = nu_cep;
-
-
-		this.id_mn_resi = id_mn_resi;
-		this.nm_bairro = nm_bairro;
-		this.nm_logrado = nm_logrado;
-		this.nu_numero = nu_numero;
-		this.nm_complem = nm_complem;
-		this.nu_ddd_tel = nu_ddd_tel;
-		
-
 		this.nosocomial = nosocomial;
-		this.av_suino = av_suino;
-		this.out_anim = out_anim;
+		this.ave_suino = ave_suino;
 		this.febre = febre;
 		this.tosse = tosse;
 		this.garganta = garganta;
-		this.dispineia = dispineia;
+		this.dispneia = dispneia;
 		this.desc_resp = desc_resp;
 		this.saturacao = saturacao;
 		this.diarreia = diarreia;
 		this.vomito = vomito;
-		this.dor_abd = dor_abd;
-		this.fadiga = fadiga;
-		this.perd_olft = perd_olft;
-		this.perd_pala = perd_pala;
 		this.outro_sin = outro_sin;
 		this.outro_des = outro_des;
-		this.fator_risc = fator_risc;
 		this.puerpera = puerpera;
+		this.fator_risc = fator_risc;
 		this.cardiopati = cardiopati;
 		this.hematologi = hematologi;
 		this.sind_down = sind_down;
@@ -307,17 +341,6 @@ public class Srag {
 		this.obes_imc = obes_imc;
 		this.out_morbi = out_morbi;
 		this.morbi_desc = morbi_desc;
-		this.vacina_cov = vacina_cov;
-		this.dose_1_cov = dose_1_cov;
-		this.dose_2_cov = dose_2_cov;
-		this.dose_ref = dose_ref;
-		this.fab_cov1 = fab_cov1;
-		this.fab_cov2 = fab_cov2;
-		this.fab_covref = fab_covref;
-		this.lote_1_cov = lote_1_cov;
-		this.lote_2_cov = lote_2_cov;
-		this.lote_ref = lote_ref;
-		this.fnt_in_cov = fnt_in_cov;
 		this.vacina = vacina;
 		this.dt_ut_dose = dt_ut_dose;
 		this.mae_vac = mae_vac;
@@ -330,12 +353,13 @@ public class Srag {
 		this.tp_antivir = tp_antivir;
 		this.out_antiv = out_antiv;
 		this.dt_antivir = dt_antivir;
-		this.Hospital = hospital;
+		this.hospital = hospital;
 		this.dt_interna = dt_interna;
 		this.sg_uf_inte = sg_uf_inte;
 		this.id_rg_inte = id_rg_inte;
+		this.co_rg_inte = co_rg_inte;
 		this.id_mn_inte = id_mn_inte;
-		this.id_un_inte = id_un_inte;
+		this.co_mu_inte = co_mu_inte;
 		this.uti = uti;
 		this.dt_entuti = dt_entuti;
 		this.dt_saidauti = dt_saidauti;
@@ -343,13 +367,51 @@ public class Srag {
 		this.raiox_res = raiox_res;
 		this.raiox_out = raiox_out;
 		this.dt_raiox = dt_raiox;
-		this.tomo_res = tomo_res;
-		this.tomo_out = tomo_out;
-		this.dt_tomo = dt_tomo;
 		this.amostra = amostra;
 		this.dt_coleta = dt_coleta;
 		this.tp_amostra = tp_amostra;
 		this.out_amost = out_amost;
+		
+		/*
+		this.tem_cpf = tem_cpf;
+		this.nu_cpf = nu_cpf;
+		this.estrang = estrang;
+		this.nu_cns = nu_cns;
+		this.nm_pacient = nm_pacient;
+		this.cs_etnia = cs_etnia;
+		this.pov_ct = pov_ct;
+		this.tp_pov_ct = tp_pov_ct;
+		this.pac_cocbo = pac_cocbo;
+		this.nm_mae_pac = nm_mae_pac;
+		this.nu_cep = nu_cep;
+		this.id_mn_resi = id_mn_resi;
+		this.nm_bairro = nm_bairro;
+		this.nm_logrado = nm_logrado;
+		this.nu_numero = nu_numero;
+		this.nm_complem = nm_complem;
+		this.nu_ddd_tel = nu_ddd_tel;
+		this.out_anim = out_anim;
+		this.dor_abd = dor_abd;
+		this.fadiga = fadiga;
+		this.perd_olft = perd_olft;
+		this.perd_pala = perd_pala;
+		this.dose_1_cov = dose_1_cov;
+		this.dose_2_cov = dose_2_cov;
+		this.dose_ref = dose_ref;
+		this.fab_cov1 = fab_cov1;
+		this.fab_cov2 = fab_cov2;
+		this.fab_covref = fab_covref;
+		this.lote_1_cov = lote_1_cov;
+		this.lote_2_cov = lote_2_cov;
+		this.lote_ref = lote_ref;
+		this.fnt_in_cov = fnt_in_cov;
+
+		this.id_un_inte = id_un_inte;
+		
+		this.tomo_res = tomo_res;
+		this.tomo_out = tomo_out;
+		this.dt_tomo = dt_tomo;
+		
 		this.requi_gal = requi_gal;
 		this.tp_tes_an = tp_tes_an;
 		this.dt_res_an = dt_res_an;
@@ -569,47 +631,43 @@ public class Srag {
 		return id_pais;
 	}
 
-	public String getNosocomial() {
+	public double getNosocomial() {
 		return nosocomial;
-	}
-
-	public String getAv_suino() {
-		return av_suino;
 	}
 
 	public String getOut_anim() {
 		return out_anim;
 	}
 
-	public String getFebre() {
+	public double getFebre() {
 		return febre;
 	}
 
-	public String getTosse() {
+	public double getTosse() {
 		return tosse;
 	}
 
-	public String getGarganta() {
+	public double getGarganta() {
 		return garganta;
 	}
 
-	public String getDispineia() {
-		return dispineia;
+	public double getDispneia() {
+		return dispneia;
 	}
 
-	public String getDesc_resp() {
+	public double getDesc_resp() {
 		return desc_resp;
 	}
 
-	public String getSaturacao() {
+	public double getSaturacao() {
 		return saturacao;
 	}
 
-	public String getDiarreia() {
+	public double getDiarreia() {
 		return diarreia;
 	}
 
-	public String getVomito() {
+	public double getVomito() {
 		return vomito;
 	}
 
@@ -629,7 +687,7 @@ public class Srag {
 		return perd_pala;
 	}
 
-	public String getOutro_sin() {
+	public double getOutro_sin() {
 		return outro_sin;
 	}
 
@@ -637,63 +695,63 @@ public class Srag {
 		return outro_des;
 	}
 
-	public String getFator_risc() {
+	public double  getFator_risc() {
 		return fator_risc;
 	}
 
-	public String getPuerpera() {
+	public double getPuerpera() {
 		return puerpera;
 	}
 
-	public String getCardiopati() {
+	public double  getCardiopati() {
 		return cardiopati;
 	}
 
-	public String getHematologi() {
+	public double  getHematologi() {
 		return hematologi;
 	}
 
-	public String getSind_down() {
+	public double  getSind_down() {
 		return sind_down;
 	}
 
-	public String getHepatica() {
+	public double getHepatica() {
 		return hepatica;
 	}
 
-	public String getAsma() {
+	public double  getAsma() {
 		return asma;
 	}
 
-	public String getDiabetes() {
+	public double getDiabetes() {
 		return diabetes;
 	}
 
-	public String getNeurologic() {
+	public double  getNeurologic() {
 		return neurologic;
 	}
 
-	public String getPneumopati() {
+	public double  getPneumopati() {
 		return pneumopati;
 	}
 
-	public String getImunodepre() {
+	public double  getImunodepre() {
 		return imunodepre;
 	}
 
-	public String getRenal() {
+	public double  getRenal() {
 		return renal;
 	}
 
-	public String getObsidade() {
+	public double  getObsidade() {
 		return obsidade;
 	}
 
-	public String getObes_imc() {
+	public double  getObes_imc() {
 		return obes_imc;
 	}
 
-	public String getOut_morbi() {
+	public double  getOut_morbi() {
 		return out_morbi;
 	}
 
@@ -745,43 +803,43 @@ public class Srag {
 		return fnt_in_cov;
 	}
 
-	public String getVacina() {
+	public double getVacina() {
 		return vacina;
 	}
 
-	public Date getDt_ut_dose() {
+	public Object getDt_ut_dose() {
 		return dt_ut_dose;
 	}
 
-	public String getMae_vac() {
+	public double getMae_vac() {
 		return mae_vac;
 	}
 
-	public Date getDt_vac_mae() {
+	public Object getDt_vac_mae() {
 		return dt_vac_mae;
 	}
 
-	public String getMae_amamenta() {
+	public double getMae_amamenta() {
 		return mae_amamenta;
 	}
 
-	public Date getDt_doseuni() {
+	public Object getDt_doseuni() {
 		return dt_doseuni;
 	}
 
-	public Date getDt_1_dose() {
+	public Object getDt_1_dose() {
 		return dt_1_dose;
 	}
 
-	public Date getDt_2_dose() {
+	public Object getDt_2_dose() {
 		return dt_2_dose;
 	}
 
-	public String getAntiviral() {
+	public double getAntiviral() {
 		return antiviral;
 	}
 
-	public String getTp_antivir() {
+	public double getTp_antivir() {
 		return tp_antivir;
 	}
 
@@ -789,15 +847,15 @@ public class Srag {
 		return out_antiv;
 	}
 
-	public Date getDt_antivir() {
+	public Object getDt_antivir() {
 		return dt_antivir;
 	}
 
-	public String getHospital() {
-		return Hospital;
+	public double getHospital() {
+		return hospital;
 	}
 
-	public Date getDt_interna() {
+	public Object getDt_interna() {
 		return dt_interna;
 	}
 
@@ -817,23 +875,23 @@ public class Srag {
 		return id_un_inte;
 	}
 
-	public String getUti() {
+	public double getUti() {
 		return uti;
 	}
 
-	public Date getDt_entuti() {
+	public Object getDt_entuti() {
 		return dt_entuti;
 	}
 
-	public Date getDt_saidauti() {
+	public Object getDt_saidauti() {
 		return dt_saidauti;
 	}
 
-	public String getSuport_ven() {
+	public double getSuport_ven() {
 		return suport_ven;
 	}
 
-	public String getRaiox_res() {
+	public double getRaiox_res() {
 		return raiox_res;
 	}
 
@@ -841,7 +899,7 @@ public class Srag {
 		return raiox_out;
 	}
 
-	public Date getDt_raiox() {
+	public Object getDt_raiox() {
 		return dt_raiox;
 	}
 
@@ -857,15 +915,15 @@ public class Srag {
 		return dt_tomo;
 	}
 
-	public String getAmostra() {
+	public double getAmostra() {
 		return amostra;
 	}
 
-	public Date getDt_coleta() {
+	public Object getDt_coleta() {
 		return dt_coleta;
 	}
 
-	public String getTp_amostra() {
+	public double getTp_amostra() {
 		return tp_amostra;
 	}
 
@@ -1109,7 +1167,7 @@ public class Srag {
 		return reg_prof;
 	}
 
-	public Date getDt_digita() {
+	public Object getDt_digita() {
 		return dt_digita;
 	}
 	
@@ -1131,6 +1189,18 @@ public class Srag {
 	
 	public String getSurto_sg() {
 		return surto_sg;
+	}
+
+	public double getAve_suino() {
+		return ave_suino;
+	}
+	
+	public double getCo_rg_inte() {
+		return co_rg_inte;
+	}
+
+	public double getCo_mu_inte() {
+		return co_mu_inte;
 	}
 
 }
