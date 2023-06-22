@@ -134,6 +134,53 @@ public class SragController {
 				String classi_out = "Nulo";
 				double criterio = -1;
 				double evolucao = -1;
+				Object dt_evoluca =  "Nulo";
+				Object dt_encerra = "Nulo";
+				Object dt_digita = "Nulo";
+				// *VGM // DJ-DO
+				double pcr_sars2 = -1;
+				String pac_cocbo = "Nulo";
+				String pac_dscbo = "Nulo";
+				String out_anim= "Nulo";
+				double dor_abd = -1;
+				double fadiga = -1;
+				double perd_olft = -1;
+				double perd_pala = -1;
+				double tomo_res = -1;
+				String tomo_out= "Nulo";
+				Object dt_tomo= "Nulo";
+				double tp_tes_an = -1;
+				Object dt_res_an= "Nulo";
+				double res_an = -1;
+				double pos_an_flu = -1;
+				double tp_flu_an = -1; 
+				double pos_an_out = -1;
+				double an_sars2 = -1;
+				double an_vsr = -1;
+				double an_para1 = -1;
+				double an_para2 = -1;
+				double an_para3 = -1;
+				double an_adeno = -1;
+				double an_outro = -1;
+				String ds_an_out = "Nulo";
+				double tp_am_sor = -1;
+				String sor_out = "Nulo";
+				Object dt_co_sor = "Nulo";
+				double tp_sor = -1;
+				String out_sor = "Nulo";
+				Object dt_res = "Nulo";
+				double res_igg = -1;
+				double res_igm = -1;
+				double res_iga = -1;
+				double estrang = -1;
+				double vacina_cov = -1;
+				Object dose_1_cov = "Nulo";
+				Object dose_2_cov = "Nulo";
+				Object dose_ref = "Nulo";
+				String fab_cov1 = "Nulo";
+				String fab_cov2 = "Nulo";
+				String fab_covref = "Nulo";
+				String lote_ref = "Nulo";
 				
 				/* */
 				try {
@@ -229,6 +276,54 @@ public class SragController {
 					if (r.getCell(107) != null) { classi_out = r.getCell(107).toString(); }
 					if (r.getCell(108) != null) { criterio = r.getCell(108).getNumericCellValue(); }
 					if (r.getCell(109) != null) { evolucao = r.getCell(109).getNumericCellValue(); }
+					if (r.getCell(110) != null) { dt_evoluca = r.getCell(110).getDateCellValue(); }
+					if (r.getCell(111) != null) { dt_encerra = r.getCell(111).getDateCellValue(); }
+					if (r.getCell(112) != null) { dt_digita = r.getCell(112).getDateCellValue(); }
+					// *VGM // DJ-DO
+					if (r.getCell(119) != null) { pcr_sars2 = r.getCell(119).getNumericCellValue(); }
+					if (r.getCell(120) != null) { pac_cocbo = r.getCell(120).toString(); }
+					if (r.getCell(121) != null) { pac_dscbo = r.getCell(121).toString(); }
+					if (r.getCell(122) != null) { out_anim = r.getCell(122).toString(); }
+					if (r.getCell(123) != null) { dor_abd = r.getCell(123).getNumericCellValue(); }
+					if (r.getCell(124) != null) { fadiga = r.getCell(124).getNumericCellValue(); }
+					if (r.getCell(125) != null) { perd_olft = r.getCell(125).getNumericCellValue(); }
+					if (r.getCell(126) != null) { perd_pala = r.getCell(126).getNumericCellValue(); }
+					if (r.getCell(127) != null) { tomo_res = r.getCell(127).getNumericCellValue(); }
+					if (r.getCell(128) != null) { tomo_out = r.getCell(128).toString(); }
+					if (r.getCell(129) != null) { dt_tomo = r.getCell(129).getDateCellValue(); }
+					if (r.getCell(130) != null) { tp_tes_an = r.getCell(130).getNumericCellValue(); }
+					if (r.getCell(131) != null) { dt_res_an = r.getCell(131).getDateCellValue(); }
+					if (r.getCell(132) != null) { res_an = r.getCell(132).getNumericCellValue(); }
+					if (r.getCell(133) != null) { pos_an_flu = r.getCell(133).getNumericCellValue(); }
+					if (r.getCell(134) != null) { tp_flu_an = r.getCell(134).getNumericCellValue(); }
+					if (r.getCell(135) != null) { pos_an_out = r.getCell(135).getNumericCellValue(); }
+					if (r.getCell(136) != null) { an_sars2 = r.getCell(136).getNumericCellValue(); }
+					if (r.getCell(137) != null) { an_vsr = r.getCell(137).getNumericCellValue(); }
+					if (r.getCell(138) != null) { an_para1 = r.getCell(138).getNumericCellValue(); }
+					if (r.getCell(139) != null) { an_para2 = r.getCell(139).getNumericCellValue(); }
+					if (r.getCell(140) != null) { an_para3 = r.getCell(140).getNumericCellValue(); }
+					if (r.getCell(141) != null) { an_adeno = r.getCell(141).getNumericCellValue(); }
+					if (r.getCell(142) != null) { an_outro = r.getCell(142).getNumericCellValue(); }
+					if (r.getCell(143) != null) { ds_an_out = r.getCell(143).toString(); }
+					if (r.getCell(144) != null) { tp_am_sor = r.getCell(144).getNumericCellValue(); }
+					if (r.getCell(145) != null) { sor_out = r.getCell(145).toString(); }
+					if (r.getCell(146) != null) { dt_co_sor = r.getCell(146).getDateCellValue(); }
+					if (r.getCell(147) != null) { tp_sor = r.getCell(147).getNumericCellValue(); }
+					if (r.getCell(148) != null) { out_sor = r.getCell(148).toString(); }
+					if (r.getCell(149) != null) { dt_res = r.getCell(149).getDateCellValue(); }
+					if (r.getCell(150) != null) { res_igg = r.getCell(150).getNumericCellValue(); }
+					if (r.getCell(151) != null) { res_igm = r.getCell(151).getNumericCellValue(); }
+					if (r.getCell(152) != null) { res_iga = r.getCell(152).getNumericCellValue(); }
+					if (r.getCell(153) != null) { estrang = r.getCell(153).getNumericCellValue(); }
+					if (r.getCell(154) != null) { vacina_cov = r.getCell(154).getNumericCellValue(); }
+					if (r.getCell(155) != null) { dose_1_cov = r.getCell(155).getDateCellValue(); }
+					if (r.getCell(156) != null) { dose_2_cov = r.getCell(156).getDateCellValue(); }
+					if (r.getCell(157) != null) { dose_ref = r.getCell(157).getDateCellValue(); }
+					if (r.getCell(158) != null) { fab_cov1 = r.getCell(158).toString(); }
+					if (r.getCell(159) != null) { fab_cov2 = r.getCell(159).toString(); }
+					if (r.getCell(160) != null) { fab_covref = r.getCell(160).toString(); }
+					if (r.getCell(161) != null) { lote_ref = r.getCell(161).toString(); }
+					
 					
 					/* */
 					srag.add(new Srag(
@@ -342,10 +437,56 @@ public class SragController {
 							,classi_out
 							,criterio
 							,evolucao
-						
-							
-							/* */
+							,dt_evoluca 
+							,dt_encerra
+							,dt_digita						
+							,pcr_sars2
+							,pac_cocbo
+							,pac_dscbo
+							,out_anim
+							,dor_abd
+							,fadiga
+							,perd_olft
+							,perd_pala
+							,tomo_res
+							,tomo_out
+							,dt_tomo
+							,tp_tes_an
+							,dt_res_an
+							,res_an
+							,pos_an_flu
+							,tp_flu_an
+							,pos_an_out
+							,an_sars2
+							,an_vsr
+							,an_para1
+							,an_para2
+							,an_para3
+							,an_adeno
+							,an_outro
+							,ds_an_out
+							,tp_am_sor
+							,sor_out
+							,dt_co_sor
+							,tp_sor
+							,out_sor
+							,dt_res
+							,res_igg
+							,res_igm
+							,res_iga
+							,estrang
+							,vacina_cov
+							,dose_1_cov
+							,dose_2_cov
+							,dose_ref
+							,fab_cov1
+							,fab_cov2
+							,fab_covref
+							,lote_ref
 							));
+
+					int i = this.srag.size();
+					
 				}
 				catch (Error e) {
 					System.err.print(e);
@@ -358,12 +499,8 @@ public class SragController {
 		
 			}
 		}
-		
-		
-		
 	}
-	
-	
+
 	//
 	@GetMapping
 	public String getSarg() {
