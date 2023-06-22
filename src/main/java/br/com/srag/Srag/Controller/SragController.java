@@ -110,8 +110,32 @@ public class SragController {
 				Object dt_coleta = "Nulo";
 				double tp_amostra = -1;
 				String out_amost = "Nulo";
+				double pcr_resul = -1;
+				Object dt_pcr = "Nulo";
+				double pos_pcrflu = -1;
+				double tp_flu_pcr = -1;
+				double pcr_fluasu = -1;
+				String fluasu_out = "Nulo";
+				double pcr_flubli = -1;
+				String flubli_out = "Nulo";
+				double pos_pcrout = -1;
+				double pcr_vsr = -1;
+				double pcr_para1 = -1;
+				double pcr_para2 = -1;
+				double pcr_para3 = -1;
+				double pcr_para4 = -1;
+				double pcr_adeno = -1;
+				double pcr_metap = -1;
+				double pcr_boca = -1;
+				double pcr_rino = -1;
+				double pcr_outro = -1;
+				String ds_pcr_out = "Nulo";
+				double classi_fin = -1;
+				String classi_out = "Nulo";
+				double criterio = -1;
+				double evolucao = -1;
 				
-				//
+				/* */
 				try {
 					if (r.getCell(5) != null) { id_regiona = r.getCell(5).toString(); }
 					if (r.getCell(6) != null) { co_regiona = r.getCell(6).getNumericCellValue(); }
@@ -181,9 +205,31 @@ public class SragController {
 					if (r.getCell(83) != null) { dt_coleta = r.getCell(83).getDateCellValue(); }
 					if (r.getCell(84) != null) { tp_amostra = r.getCell(84).getNumericCellValue(); }
 					if (r.getCell(85) != null) { out_amost = r.getCell(85).toString(); }
-
+					if (r.getCell(86) != null) { pcr_resul = r.getCell(86).getNumericCellValue(); }
+					if (r.getCell(87) != null) { dt_pcr = r.getCell(87).getDateCellValue(); }
+					if (r.getCell(88) != null) { pos_pcrflu = r.getCell(88).getNumericCellValue(); }
+					if (r.getCell(89) != null) { tp_flu_pcr = r.getCell(89).getNumericCellValue(); }
+					if (r.getCell(90) != null) { pcr_fluasu = r.getCell(90).getNumericCellValue(); }
+					if (r.getCell(91) != null) { fluasu_out = r.getCell(91).toString(); }
+					if (r.getCell(92) != null) { pcr_flubli = r.getCell(92).getNumericCellValue(); }
+					if (r.getCell(93) != null) { flubli_out = r.getCell(93).toString(); }
+					if (r.getCell(94) != null) { pos_pcrout = r.getCell(94).getNumericCellValue(); }
+					if (r.getCell(95) != null) { pcr_vsr = r.getCell(95).getNumericCellValue(); }
+					if (r.getCell(96) != null) { pcr_para1 = r.getCell(96).getNumericCellValue(); }
+					if (r.getCell(97) != null) { pcr_para2 = r.getCell(97).getNumericCellValue(); }
+					if (r.getCell(98) != null) { pcr_para3 = r.getCell(98).getNumericCellValue(); }
+					if (r.getCell(99) != null) { pcr_para4 = r.getCell(99).getNumericCellValue(); }
+					if (r.getCell(100) != null) { pcr_adeno = r.getCell(100).getNumericCellValue(); }
+					if (r.getCell(101) != null) { pcr_metap = r.getCell(101).getNumericCellValue(); }
+					if (r.getCell(102) != null) { pcr_boca = r.getCell(102).getNumericCellValue(); }
+					if (r.getCell(103) != null) { pcr_rino = r.getCell(103).getNumericCellValue(); }
+					if (r.getCell(104) != null) { pcr_outro = r.getCell(104).getNumericCellValue(); }
+					if (r.getCell(105) != null) { ds_pcr_out = r.getCell(105).toString(); }
+					if (r.getCell(106) != null) { classi_fin = r.getCell(106).getNumericCellValue(); }
+					if (r.getCell(107) != null) { classi_out = r.getCell(107).toString(); }
+					if (r.getCell(108) != null) { criterio = r.getCell(108).getNumericCellValue(); }
+					if (r.getCell(109) != null) { evolucao = r.getCell(109).getNumericCellValue(); }
 					
-				
 					/* */
 					srag.add(new Srag(
 							r.getCell(0).getDateCellValue()
@@ -272,6 +318,31 @@ public class SragController {
 							,dt_coleta
 							,tp_amostra
 							,out_amost
+							,pcr_resul
+							,dt_pcr
+							,pos_pcrflu
+							,tp_flu_pcr
+							,pcr_fluasu
+							,fluasu_out
+							,pcr_flubli
+							,flubli_out
+							,pos_pcrout
+							,pcr_vsr
+							,pcr_para1
+							,pcr_para2
+							,pcr_para3
+							,pcr_para4
+							,pcr_adeno
+							,pcr_metap
+							,pcr_boca
+							,pcr_rino
+							,pcr_outro
+							,ds_pcr_out
+							,classi_fin
+							,classi_out
+							,criterio
+							,evolucao
+						
 							
 							/* */
 							));

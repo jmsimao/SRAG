@@ -107,7 +107,30 @@ public class Srag {
 	private Object dt_coleta;
 	private double tp_amostra;
 	private String out_amost; //CH
-	
+	private double pcr_resul;
+	private Object dt_pcr;
+	private double pos_pcrflu;
+	private double tp_flu_pcr;
+	private double pcr_fluasu;
+	private String fluasu_out;
+	private double pcr_flubli;
+	private String flubli_out;
+	private double pos_pcrout; //CQ
+	private double pcr_vsr;
+	private double pcr_para1;
+	private double pcr_para2;
+	private double pcr_para3;
+	private double pcr_para4;
+	private double pcr_adeno;
+	private double pcr_metap;
+	private double pcr_boca;
+	private double pcr_rino;
+	private double pcr_outro;
+	private String ds_pcr_out; //DB
+	private double classi_fin;
+	private String classi_out;
+	private double criterio;
+	private double evolucao; //DF
 	
 	/* */
 	private String dor_abd;
@@ -130,7 +153,6 @@ public class Srag {
 	private int tomo_res;
 	private String tomo_out;
 	private Date dt_tomo;
-	
 	private int requi_gal;
 	private int tp_tes_an;
 	private Date dt_res_an;
@@ -148,27 +170,7 @@ public class Srag {
 	private String an_adeno;
 	private String an_outro;
 	private String ds_an_out;
-	private String pcr_resul;
-	private Date dt_pcr;
-	private String pos_pcrflu;
-	private String tp_flu_pcr;
-	private String pcr_fluasu;
-	private String fluasu_out;
-	private String pcr_flubli;
-	private String flubli_out;
-	private String pos_pcrout;
 	private String pcr_sars2;
-	private String pcr_vsr;
-	private String pcr_para1;
-	private String pcr_para2;
-	private String pcr_para3;
-	private String pcr_para4;
-	private String pcr_adeno;
-	private String pcr_metap;
-	private String pcr_boca;
-	private String pcr_rino;
-	private String pcr_outro;
-	private String ds_pcr_out;
 	private String lab_pcr;
 	private int tp_am_sor;
 	private String sor_out;
@@ -180,10 +182,7 @@ public class Srag {
 	private String res_igm;
 	private String res_iga;
 	private Date dt_res;
-	private String classi_fin;
-	private String classi_out;
-	private String criterio;
-	private String evolucao;
+
 	private Date dt_evoluca;
 	private Date dt_encerra;
 	private String nu_do;
@@ -279,8 +278,31 @@ public class Srag {
 				,Object dt_coleta
 				,double tp_amostra
 				,String out_amost
+				,double pcr_resul
+				,Object dt_pcr
+				,double pos_pcrflu
+				,double tp_flu_pcr
+				,double pcr_fluasu
+				,String fluasu_out
+				,double pcr_flubli
+				,String flubli_out
+				,double pos_pcrout
+				,double pcr_vsr
+				,double pcr_para1
+				,double pcr_para2
+				,double pcr_para3
+				,double pcr_para4
+				,double pcr_adeno
+				,double pcr_metap
+				,double pcr_boca
+				,double pcr_rino
+				,double pcr_outro
+				,String ds_pcr_out
+				,double classi_fin
+				,String classi_out
+				,double criterio
+				,double evolucao
 				
-								
 				/* */
 			) {
 		super();
@@ -291,7 +313,7 @@ public class Srag {
 		this.sem_pri = sem_pri;
 		this.sg_uf_not = sg_uf_not;
 		this.id_regiona = id_regiona;
-		this.co_regiona = co_regiona; // 6
+		this.co_regiona = co_regiona; 
 		this.id_municip = id_municip;
 		this.co_mun_note = co_mun_note;
 		this.id_unidade = id_unidade;
@@ -300,7 +322,7 @@ public class Srag {
 		this.dt_nasc = dt_nasc;
 		this.nu_idade_n = nu_idade_n;
 		this.tp_idade = tp_idade;
-		this.cod_idade = cod_idade; // 15
+		this.cod_idade = cod_idade;
 		this.cs_gestant = cs_gestant;
 		this.cs_raca = cs_raca;
 		this.cs_escol_n = cs_escol_n;
@@ -371,6 +393,30 @@ public class Srag {
 		this.dt_coleta = dt_coleta;
 		this.tp_amostra = tp_amostra;
 		this.out_amost = out_amost;
+		this.pcr_resul = pcr_resul;
+		this.dt_pcr = dt_pcr;
+		this.pos_pcrflu = pos_pcrflu;
+		this.tp_flu_pcr = tp_flu_pcr;
+		this.pcr_fluasu = pcr_fluasu;
+		this.fluasu_out = fluasu_out;
+		this.pcr_flubli = pcr_flubli;
+		this.flubli_out = flubli_out;
+		this.pos_pcrout = pos_pcrout; 
+		this.pcr_vsr = pcr_vsr;
+		this.pcr_para1 = pcr_para1;
+		this.pcr_para2 = pcr_para2;
+		this.pcr_para3 = pcr_para3;
+		this.pcr_para4 = pcr_para4;
+		this.pcr_adeno = pcr_adeno;
+		this.pcr_metap = pcr_metap;
+		this.pcr_boca = pcr_boca;
+		this.pcr_rino = pcr_rino;
+		this.pcr_outro = pcr_outro;
+		this.ds_pcr_out = ds_pcr_out;
+		this.classi_fin = classi_fin;
+		this.classi_out = classi_out;
+		this.criterio = criterio;
+		this.evolucao = evolucao;
 		
 		/*
 		this.tem_cpf = tem_cpf;
@@ -429,27 +475,12 @@ public class Srag {
 		this.an_adeno = an_adeno;
 		this.an_outro = an_outro;
 		this.ds_an_out = ds_an_out;
-		this.pcr_resul = pcr_resul;
-		this.dt_pcr = dt_pcr;
-		this.pos_pcrflu = pos_pcrflu;
-		this.tp_flu_pcr = tp_flu_pcr;
-		this.pcr_fluasu = pcr_fluasu;
-		this.fluasu_out = fluasu_out;
-		this.pcr_flubli = pcr_flubli;
-		this.flubli_out = flubli_out;
-		this.pos_pcrout = pos_pcrout;
+		
 		this.pcr_sars2 = pcr_sars2;
-		this.pcr_vsr = pcr_vsr;
-		this.pcr_para1 = pcr_para1;
-		this.pcr_para2 = pcr_para2;
-		this.pcr_para3 = pcr_para3;
-		this.pcr_para4 = pcr_para4;
-		this.pcr_adeno = pcr_adeno;
-		this.pcr_metap = pcr_metap;
-		this.pcr_boca = pcr_boca;
-		this.pcr_rino = pcr_rino;
-		this.pcr_outro = pcr_outro;
-		this.ds_pcr_out = ds_pcr_out;
+		
+	
+		
+		
 		this.lab_pcr = lab_pcr;
 		this.tp_am_sor = tp_am_sor;
 		this.sor_out = sor_out;
@@ -461,10 +492,8 @@ public class Srag {
 		this.res_igm = res_igm;
 		this.res_iga = res_iga;
 		this.dt_res = dt_res;
-		this.classi_fin = classi_fin;
-		this.classi_out = classi_out;
-		this.criterio = criterio;
-		this.evolucao = evolucao;
+		
+
 		this.dt_evoluca = dt_evoluca;
 		this.dt_encerra = dt_encerra;
 		this.nu_do = nu_do;
@@ -999,23 +1028,23 @@ public class Srag {
 		return ds_an_out;
 	}
 
-	public String getPcr_resul() {
+	public double getPcr_resul() {
 		return pcr_resul;
 	}
 
-	public Date getDt_pcr() {
+	public Object getDt_pcr() {
 		return dt_pcr;
 	}
 
-	public String getPos_pcrflu() {
+	public double getPos_pcrflu() {
 		return pos_pcrflu;
 	}
 
-	public String getTp_flu_pcr() {
+	public double getTp_flu_pcr() {
 		return tp_flu_pcr;
 	}
 
-	public String getPcr_fluasu() {
+	public double getPcr_fluasu() {
 		return pcr_fluasu;
 	}
 
@@ -1023,7 +1052,7 @@ public class Srag {
 		return fluasu_out;
 	}
 
-	public String getPcr_flubli() {
+	public double getPcr_flubli() {
 		return pcr_flubli;
 	}
 
@@ -1031,7 +1060,7 @@ public class Srag {
 		return flubli_out;
 	}
 
-	public String getPos_pcrout() {
+	public double getPos_pcrout() {
 		return pos_pcrout;
 	}
 
@@ -1039,43 +1068,43 @@ public class Srag {
 		return pcr_sars2;
 	}
 
-	public String getPcr_vsr() {
+	public double getPcr_vsr() {
 		return pcr_vsr;
 	}
 
-	public String getPcr_para1() {
+	public double getPcr_para1() {
 		return pcr_para1;
 	}
 
-	public String getPcr_para2() {
+	public double getPcr_para2() {
 		return pcr_para2;
 	}
 
-	public String getPcr_para3() {
+	public double getPcr_para3() {
 		return pcr_para3;
 	}
 
-	public String getPcr_para4() {
+	public double getPcr_para4() {
 		return pcr_para4;
 	}
 
-	public String getPcr_adeno() {
+	public double getPcr_adeno() {
 		return pcr_adeno;
 	}
 
-	public String getPcr_metap() {
+	public double getPcr_metap() {
 		return pcr_metap;
 	}
 
-	public String getPcr_boca() {
+	public double getPcr_boca() {
 		return pcr_boca;
 	}
 
-	public String getPcr_rino() {
+	public double getPcr_rino() {
 		return pcr_rino;
 	}
 
-	public String getPcr_outro() {
+	public double getPcr_outro() {
 		return pcr_outro;
 	}
 
@@ -1127,7 +1156,7 @@ public class Srag {
 		return dt_res;
 	}
 
-	public String getClassi_fin() {
+	public double getClassi_fin() {
 		return classi_fin;
 	}
 
@@ -1135,11 +1164,11 @@ public class Srag {
 		return classi_out;
 	}
 
-	public String getCriterio() {
+	public double getCriterio() {
 		return criterio;
 	}
 
-	public String getEvolucao() {
+	public double getEvolucao() {
 		return evolucao;
 	}
 
