@@ -1,22 +1,21 @@
 package br.com.srag.Srag.Controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.srag.Srag.Model.Srag;
-import jxl.write.DateTime;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Date;
 import java.io.File;
 
 
@@ -28,8 +27,9 @@ public class SragController {
 	private List<Srag> srag = new ArrayList<>();
 	
 	private static String nomeArq = "C:\\Stage\\INFLUD22-15-08-2022-2.xlsx";
+	//private static String nomeArq = "C:\\Stage\\INFLUD22-15-08-2022.xlsx";
 	private final String workSheet = "Teste";
-	//private static String nomeArq = "C:\\Stage\\Srag01.xlsx";
+	
 	
 	public SragController() throws IOException {
 		this.populaSrag();
@@ -39,12 +39,34 @@ public class SragController {
 		FileInputStream arquivo = new FileInputStream(new File(nomeArq));
 		XSSFWorkbook workbook = new XSSFWorkbook(arquivo);
 		XSSFSheet sheet = workbook.getSheet(this.workSheet);
-		
+
 		for(Row r : sheet) {
 			if (r.getRowNum() > 0) {
+				Object dt_notific = "Nulo";
+				double sem_not = -1;
+				Object dt_sin_pri = "Nulo";
+				double sem_pri = -1;
+				String sg_uf_not = "Nulo";
 				String id_regiona = "Nulo";
 				double co_regiona = -1;
+			
+				String id_municip = "Nulo"; // 7
+				double co_mun_note = -1;
+				String id_unidade = "Nulo";
+				double co_uni_note = -1; // 10
+				String cs_sexo = "Nulo";
+				Object dt_nasc = "Nulo";
+				double nu_idade_n = -1;
+				double tp_idade = -1;
+				double cod_idade = -1; // 15
+				double cs_gestant = -1;
+				double cs_raca = -1; // 17
+				
 				double cs_escol_n = -1;
+				
+				String id_pais = "Nulo"; //19
+				double co_pais = -1; // 20
+			
 				String sg_uf = "Nulo";
 				String id_rg_resi = "Nulo";
 				double co_rg_resi = -1;
@@ -182,11 +204,39 @@ public class SragController {
 				String fab_covref = "Nulo";
 				String lote_ref = "Nulo";
 				
+				// Setters atribuição.
+				String lab_pr_cov = "Nulo";
+				String lote_1_cov = "Nulo";
+				String lote_2_cov = "Nulo";
+				double fnt_in_cov = -1;
+								
 				/* */
 				try {
+					if (r.getCell(0) != null) { dt_notific = r.getCell(0).getDateCellValue(); }
+					if (r.getCell(1) != null) { sem_not = r.getCell(1).getNumericCellValue(); }
+					if (r.getCell(2) != null) { dt_sin_pri = r.getCell(2).getDateCellValue(); }
+					if (r.getCell(3) != null) { sem_pri = r.getCell(3).getNumericCellValue(); }
+					if (r.getCell(4) != null) { sg_uf_not  = r.getCell(4).toString(); }
 					if (r.getCell(5) != null) { id_regiona = r.getCell(5).toString(); }
 					if (r.getCell(6) != null) { co_regiona = r.getCell(6).getNumericCellValue(); }
+					
+					if (r.getCell(7) != null) { id_municip  = r.getCell(7).toString(); }
+					if (r.getCell(8) != null) { co_mun_note = r.getCell(8).getNumericCellValue(); }
+					if (r.getCell(9) != null) { id_unidade = r.getCell(9).toString(); }
+					if (r.getCell(10) != null) { co_uni_note = r.getCell(10).getNumericCellValue(); }
+					if (r.getCell(11) != null) { cs_sexo = r.getCell(11).toString(); }
+					if (r.getCell(12) != null) { dt_nasc = r.getCell(12).getDateCellValue(); }
+					if (r.getCell(13) != null) { nu_idade_n = r.getCell(13).getNumericCellValue(); }
+					if (r.getCell(14) != null) { tp_idade = r.getCell(14).getNumericCellValue(); }
+					if (r.getCell(15) != null) { cod_idade = r.getCell(15).getNumericCellValue(); }
+					if (r.getCell(16) != null) { cs_gestant = r.getCell(16).getNumericCellValue(); }
+					if (r.getCell(17) != null) { cs_raca = r.getCell(17).getNumericCellValue(); }
+			
 					if (r.getCell(18) != null) { cs_escol_n = r.getCell(18).getNumericCellValue(); }
+					
+					if (r.getCell(19) != null) { id_pais = r.getCell(19).toString(); }
+					if (r.getCell(20) != null) { co_pais = r.getCell(20).getNumericCellValue(); }
+					
 					if (r.getCell(21) != null) { sg_uf = r.getCell(21).toString(); }	
 					if (r.getCell(22) != null) { id_regiona = r.getCell(22).toString(); }
 					if (r.getCell(23) != null) { co_rg_resi = r.getCell(23).getNumericCellValue(); }
@@ -324,30 +374,29 @@ public class SragController {
 					if (r.getCell(160) != null) { fab_covref = r.getCell(160).toString(); }
 					if (r.getCell(161) != null) { lote_ref = r.getCell(161).toString(); }
 					
-					
 					/* */
 					srag.add(new Srag(
-							r.getCell(0).getDateCellValue()
-							,r.getCell(1).getNumericCellValue()
-							,r.getCell(2).getDateCellValue()
-							,r.getCell(3).getNumericCellValue()
-							,r.getCell(4).getStringCellValue()
+							dt_notific
+							,sem_not
+							,dt_sin_pri
+							,sem_pri
+							,sg_uf_not
 							,id_regiona
 							,co_regiona
-							,r.getCell(7).getStringCellValue()
-							,r.getCell(8).getNumericCellValue()
-							,r.getCell(9).getStringCellValue()
-							,r.getCell(10).getNumericCellValue()
-							,r.getCell(11).getStringCellValue()
-							,r.getCell(12).getDateCellValue()
-							,r.getCell(13).getNumericCellValue()
-							,r.getCell(14).getNumericCellValue()
-							,r.getCell(15).getNumericCellValue()
-							,r.getCell(16).getNumericCellValue()
-							,r.getCell(17).getNumericCellValue()
+							,id_municip
+							,co_mun_note
+							,id_unidade
+							,co_uni_note
+							,cs_sexo
+							,dt_nasc
+							,nu_idade_n
+							,tp_idade
+							,cod_idade
+							,cs_gestant
+							,cs_raca
 							,cs_escol_n
-							,r.getCell(19).getStringCellValue()
-							,r.getCell(20).getNumericCellValue()
+							,id_pais
+							,co_pais
 							,sg_uf
 							,id_rg_resi
 							,co_rg_resi
@@ -485,7 +534,16 @@ public class SragController {
 							,lote_ref
 							));
 
-					int i = this.srag.size();
+					if (r.getCell(162) != null) { lab_pr_cov = r.getCell(162).toString(); }
+					if (r.getCell(163) != null) { lote_1_cov = r.getCell(163).toString(); }
+					if (r.getCell(164) != null) { lote_2_cov = r.getCell(164).toString(); }
+					if (r.getCell(165) != null) { fnt_in_cov = r.getCell(165).getNumericCellValue(); }
+					
+					//iSrag = (this.srag.size()-1);
+					this.srag.get(this.srag.size()-1).setLab_pr_cov(lab_pr_cov);
+					this.srag.get(this.srag.size()-1).setLote_1_cov(lote_1_cov);
+					this.srag.get(this.srag.size()-1).setLote_2_cov(lote_2_cov);
+					this.srag.get(this.srag.size()-1).setFnt_in_cov(fnt_in_cov);
 					
 				}
 				catch (Error e) {
@@ -512,5 +570,17 @@ public class SragController {
 	public Iterable<Srag> getData() {
 		return srag;
 	}
+	
+	@GetMapping("/data/mun/{mun}")
+	public Iterable<Srag> getMunicipio(@PathVariable String mun) {
+		List<Srag> sragLista = new ArrayList<>();
+		for(Srag s : srag) {
+			if (s.getId_mn_resi().equals(mun)) {
+				sragLista.add(s);
+			}
+		}
+		return sragLista;
+	}
+	
 		
 }

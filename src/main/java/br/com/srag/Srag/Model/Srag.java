@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class Srag {
 	
-	private Date dt_notific;
+	private Object dt_notific;
 	private double sem_not;
-	private Date dt_sin_pri;
+	private Object dt_sin_pri;
 	private double sem_pri;
 	private String sg_uf_not;
 	private String id_regiona; // 5
@@ -16,7 +16,7 @@ public class Srag {
 	private String id_unidade;
 	private double co_uni_note;
 	private String cs_sexo;
-	private Date dt_nasc;
+	private Object dt_nasc;
 	private double nu_idade_n;
 	private double tp_idade;
 	private double cod_idade;
@@ -168,9 +168,9 @@ public class Srag {
 	private double fnt_in_cov; //fJ
 	
 	public Srag(
-				Date dt_notific 
+				Object dt_notific 
 				,double sem_not
-				,Date dt_sin_pri
+				,Object dt_sin_pri
 				,double sem_pri 
 				,String sg_uf_not
 				,String id_regiona
@@ -180,7 +180,7 @@ public class Srag {
 				,String id_unidade
 				,double co_uni_note
 				,String cs_sexo
-				,Date dt_nasc
+				,Object dt_nasc
 				,double nu_idade_n
 				,double tp_idade
 				,double cod_idade
@@ -501,7 +501,7 @@ public class Srag {
 	}
 	
 	// Getters...
-	public Date getDt_notific() {
+	public Object getDt_notific() {
 		return dt_notific;
 	}
 
@@ -511,7 +511,7 @@ public class Srag {
 	}
 
 
-	public Date getDt_sin_pri() {
+	public Object getDt_sin_pri() {
 		return dt_sin_pri;
 	}
 
@@ -561,7 +561,7 @@ public class Srag {
 	}
 
 
-	public Date getDt_nasc() {
+	public Object getDt_nasc() {
 		return dt_nasc;
 	}
 
@@ -1284,12 +1284,8 @@ public class Srag {
 	public String getLab_pr_cov() {
 		return lab_pr_cov;
 	}
+
 	
-	public void setLab_pr_cov(String lab_pr_cov) {
-		this.lab_pr_cov = lab_pr_cov;
-	}
-
-
 	public String getLote_1_cov() {
 		return lote_1_cov;
 	}
@@ -1303,5 +1299,22 @@ public class Srag {
 		return fnt_in_cov;
 	}
 
+	
+	// Setters...
+	public void setLab_pr_cov(String lab_pr_cov) {
+		this.lab_pr_cov = lab_pr_cov;
+	}
+	
+	public void setLote_1_cov(String lote_1_cov) {
+		this.lote_1_cov = lote_1_cov;
+	}
+
+	public void setLote_2_cov(String lote_2_cov) {
+		this.lote_2_cov = lote_2_cov;
+	}
+
+	public void setFnt_in_cov(double fnt_in_cov) {
+		this.fnt_in_cov = fnt_in_cov;
+	}
 	
 }
