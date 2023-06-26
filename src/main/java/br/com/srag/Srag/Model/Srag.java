@@ -1,7 +1,5 @@
 package br.com.srag.Srag.Model;
 
-import java.util.Date;
-
 public class Srag {
 	
 	private Object dt_notific;

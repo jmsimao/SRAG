@@ -1,17 +1,20 @@
 package br.com.srag.Srag.Controller;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.srag.Srag.ErrorResponse.ErrorResponse;
+import br.com.srag.Srag.ErrorResponse.NotFoundException;
 import br.com.srag.Srag.Model.Srag;
 
 import java.io.FileInputStream;
@@ -49,7 +52,6 @@ public class SragController {
 				String sg_uf_not = "Nulo";
 				String id_regiona = "Nulo";
 				double co_regiona = -1;
-			
 				String id_municip = "Nulo"; // 7
 				double co_mun_note = -1;
 				String id_unidade = "Nulo";
@@ -61,12 +63,9 @@ public class SragController {
 				double cod_idade = -1; // 15
 				double cs_gestant = -1;
 				double cs_raca = -1; // 17
-				
 				double cs_escol_n = -1;
-				
 				String id_pais = "Nulo"; //19
 				double co_pais = -1; // 20
-			
 				String sg_uf = "Nulo";
 				String id_rg_resi = "Nulo";
 				double co_rg_resi = -1;
@@ -219,7 +218,6 @@ public class SragController {
 					if (r.getCell(4) != null) { sg_uf_not  = r.getCell(4).toString(); }
 					if (r.getCell(5) != null) { id_regiona = r.getCell(5).toString(); }
 					if (r.getCell(6) != null) { co_regiona = r.getCell(6).getNumericCellValue(); }
-					
 					if (r.getCell(7) != null) { id_municip  = r.getCell(7).toString(); }
 					if (r.getCell(8) != null) { co_mun_note = r.getCell(8).getNumericCellValue(); }
 					if (r.getCell(9) != null) { id_unidade = r.getCell(9).toString(); }
@@ -231,12 +229,9 @@ public class SragController {
 					if (r.getCell(15) != null) { cod_idade = r.getCell(15).getNumericCellValue(); }
 					if (r.getCell(16) != null) { cs_gestant = r.getCell(16).getNumericCellValue(); }
 					if (r.getCell(17) != null) { cs_raca = r.getCell(17).getNumericCellValue(); }
-			
 					if (r.getCell(18) != null) { cs_escol_n = r.getCell(18).getNumericCellValue(); }
-					
 					if (r.getCell(19) != null) { id_pais = r.getCell(19).toString(); }
 					if (r.getCell(20) != null) { co_pais = r.getCell(20).getNumericCellValue(); }
-					
 					if (r.getCell(21) != null) { sg_uf = r.getCell(21).toString(); }	
 					if (r.getCell(22) != null) { id_regiona = r.getCell(22).toString(); }
 					if (r.getCell(23) != null) { co_rg_resi = r.getCell(23).getNumericCellValue(); }
@@ -537,33 +532,32 @@ public class SragController {
 					if (r.getCell(162) != null) { lab_pr_cov = r.getCell(162).toString(); }
 					if (r.getCell(163) != null) { lote_1_cov = r.getCell(163).toString(); }
 					if (r.getCell(164) != null) { lote_2_cov = r.getCell(164).toString(); }
-					if (r.getCell(165) != null) { fnt_in_cov = r.getCell(165).getNumericCellValue(); }
+					//if (r.getCell(165) != null) { fnt_in_cov = r.getCell(165).getNumericCellValue(); }
 					
 					//iSrag = (this.srag.size()-1);
 					this.srag.get(this.srag.size()-1).setLab_pr_cov(lab_pr_cov);
 					this.srag.get(this.srag.size()-1).setLote_1_cov(lote_1_cov);
 					this.srag.get(this.srag.size()-1).setLote_2_cov(lote_2_cov);
-					this.srag.get(this.srag.size()-1).setFnt_in_cov(fnt_in_cov);
+					//this.srag.get(this.srag.size()-1).setFnt_in_cov(fnt_in_cov);
 					
 				}
 				catch (Error e) {
 					System.err.print(e);
 				}
-				
-				if (r.getRowNum() > 5000) {
-					arquivo.close();
-					break;
-				}
-		
+	
 			}
 		}
+		
+		//arquivo.close();
 	}
 
 	//
 	@GetMapping
 	public String getSarg() {
-		return "Projeto de Casos de Sindrome Respiratória Aguda Grave (SARG) \r\n"
-				+ "					Hospitalizados for Spring Boot!";
+		return "<h1>" + 
+					"Projeto de Casos de Sindrome Respiratória Aguda Grave (SARG) \r\n"
+				+ "					Hospitalizados for Spring Boot!"
+				+ "</h1>"	;
 	}
 	
 	@GetMapping("/data")
@@ -571,15 +565,30 @@ public class SragController {
 		return srag;
 	}
 	
-	@GetMapping("/data/mun/{mun}")
-	public Iterable<Srag> getMunicipio(@PathVariable String mun) {
+	@GetMapping("/data/municipio/{munRes}")
+	public Iterable<Srag> getMunicipioResidencia(@PathVariable String munRes) {
 		List<Srag> sragLista = new ArrayList<>();
-		for(Srag s : srag) {
-			if (s.getId_mn_resi().equals(mun)) {
-				sragLista.add(s);
+		for(Srag srag : srag) {
+			if (srag.getId_mn_resi().equals(munRes)) {
+				sragLista.add(srag);
 			}
 		}
+		if (sragLista.isEmpty()) {
+			throw new NotFoundException("Não foi localizado o municipio!","Municipio: " + munRes);
+		}
 		return sragLista;
+	}
+	
+	@ExceptionHandler(NotFoundException.class)
+	private ErrorResponse handlerNotFoundException(NotFoundException nfe) {
+		ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND.value(),
+										HttpStatus.NOT_FOUND.toString(),
+										nfe.getMessage(),
+										nfe.getErrorInfo(),
+										this.getClass().toString()
+										);
+		
+		return errorResponse;
 	}
 	
 		
