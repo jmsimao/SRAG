@@ -568,7 +568,7 @@ public class SragController {
 	@GetMapping("/data/municipio/{munRes}")
 	public Iterable<Srag> getMunicipioResidencia(@PathVariable String munRes) {
 		List<Srag> sragLista = new ArrayList<>();
-		for(Srag srag : srag) {
+		for(Srag srag : this.srag) {
 			if (srag.getId_mn_resi().equals(munRes)) {
 				sragLista.add(srag);
 			}
@@ -587,10 +587,10 @@ public class SragController {
 				sragLista.add(srag);
 			}	
 		}
-		if (srag.isEmpty()) {
-			throw new NotFoundException("Hospital não localizado!","Hosital:" + hospital);
+		if (sragLista.isEmpty()) {
+			throw new NotFoundException("Hospital não localizado!","Hosital: " + hospital);
 		}
-		return srag;
+		return sragLista;
 	}
 	
 	
