@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.srag.Srag.ErrorResponse.ErrorResponse;
@@ -20,8 +21,6 @@ import br.com.srag.Srag.Model.Srag;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.File;
-
-
 
 @RestController
 @RequestMapping("/srag")
@@ -593,7 +592,26 @@ public class SragController {
 		return sragLista;
 	}
 	
-	
+	@GetMapping("/data/uti") 
+	public Iterable<Srag> getUTI(@RequestParam 
+								(name="uti", 
+								defaultValue = "1",
+								required = true) double uti,
+								@RequestParam 
+								(name = "saida",
+								defaultValue = "saida")
+								String saida) {
+		List<Srag> sragLista = new ArrayList<>();
+		for (Srag srag : this.srag) {
+			if (srag.getUti() == uti) {
+				sragLista.add(srag);
+			}
+		}
+		if (sragLista.isEmpty()) {
+			throw new NotFoundException("Não localizado a UTI pelo código!","Cód.UTI: " + saida);
+		}
+		return sragLista;
+	}
 	
 	@ExceptionHandler(NotFoundException.class)
 	private ErrorResponse handlerNotFoundException(NotFoundException nfe) {
@@ -606,6 +624,5 @@ public class SragController {
 		
 		return errorResponse;
 	}
-	
 		
 }
