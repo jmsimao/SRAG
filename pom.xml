@@ -12,6 +12,7 @@
 	<artifactId>SRAG</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SRAG</name>
+	<packaging>war</packaging>
 	<description>Projeto de Casos de Sindrome Respiratória Aguda Grave (SRAG) 
 					Hospitalizados for Spring Boot</description>
 	<properties>

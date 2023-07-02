@@ -531,13 +531,13 @@ public class SragController {
 					if (r.getCell(162) != null) { lab_pr_cov = r.getCell(162).toString(); }
 					if (r.getCell(163) != null) { lote_1_cov = r.getCell(163).toString(); }
 					if (r.getCell(164) != null) { lote_2_cov = r.getCell(164).toString(); }
-					//if (r.getCell(165) != null) { fnt_in_cov = r.getCell(165).getNumericCellValue(); }
+					if (r.getCell(165) != null) { fnt_in_cov = r.getCell(165).getNumericCellValue(); }
 					
 					//iSrag = (this.srag.size()-1);
 					this.srag.get(this.srag.size()-1).setLab_pr_cov(lab_pr_cov);
 					this.srag.get(this.srag.size()-1).setLote_1_cov(lote_1_cov);
 					this.srag.get(this.srag.size()-1).setLote_2_cov(lote_2_cov);
-					//this.srag.get(this.srag.size()-1).setFnt_in_cov(fnt_in_cov);
+					this.srag.get(this.srag.size()-1).setFnt_in_cov(fnt_in_cov);
 					
 				}
 				catch (Error e) {
@@ -562,6 +562,11 @@ public class SragController {
 	@GetMapping("/data")
 	public Iterable<Srag> getData() {
 		return srag;
+	}
+	
+	@GetMapping("/data/count") 
+	public String getSragCount() {
+		return "Total de documents/elements: " + this.srag.size();
 	}
 	
 	@GetMapping("/data/municipio/{munRes}")
@@ -591,7 +596,7 @@ public class SragController {
 		}
 		return sragLista;
 	}
-	
+			
 	@GetMapping("/data/uti") 
 	public Iterable<Srag> getUTI(@RequestParam 
 								(name="uti", 
