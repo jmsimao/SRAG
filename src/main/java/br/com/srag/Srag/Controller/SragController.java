@@ -573,7 +573,7 @@ public class SragController {
 	public Iterable<Srag> getMunicipioResidencia(@PathVariable String munRes) {
 		List<Srag> sragLista = new ArrayList<>();
 		for(Srag srag : this.srag) {
-			if (srag.getId_mn_resi().equals(munRes)) {
+			if (srag.getId_mn_resi().contains(munRes)) {
 				sragLista.add(srag);
 			}
 		}
