@@ -7,6 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,7 +43,12 @@ public class SragController {
 		XSSFWorkbook workbook = new XSSFWorkbook(arquivo);
 		XSSFSheet sheet = workbook.getSheet(this.workSheet);
 
+		// Contador...
+		int cont = 0;
+		
 		for(Row r : sheet) {
+			cont++;
+			
 			if (r.getRowNum() > 0) {
 				Object dt_notific = "Nulo";
 				double sem_not = -1;
@@ -368,6 +374,7 @@ public class SragController {
 					if (r.getCell(160) != null) { fab_covref = r.getCell(160).toString(); }
 					if (r.getCell(161) != null) { lote_ref = r.getCell(161).toString(); }
 					
+					
 					/* */
 					srag.add(new Srag(
 							dt_notific
@@ -533,11 +540,12 @@ public class SragController {
 					if (r.getCell(164) != null) { lote_2_cov = r.getCell(164).toString(); }
 					if (r.getCell(165) != null) { fnt_in_cov = r.getCell(165).getNumericCellValue(); }
 					
-					//iSrag = (this.srag.size()-1);
-					this.srag.get(this.srag.size()-1).setLab_pr_cov(lab_pr_cov);
-					this.srag.get(this.srag.size()-1).setLote_1_cov(lote_1_cov);
-					this.srag.get(this.srag.size()-1).setLote_2_cov(lote_2_cov);
-					this.srag.get(this.srag.size()-1).setFnt_in_cov(fnt_in_cov);
+					this.srag.get(this.srag.size()-1).setLabPrCov(lab_pr_cov);
+					this.srag.get(this.srag.size()-1).setLote1Cov(lote_1_cov);
+					this.srag.get(this.srag.size()-1).setLote2Cov(lote_2_cov);
+					this.srag.get(this.srag.size()-1).setFntInCov(fnt_in_cov);
+			
+					//} //end if!
 					
 				}
 				catch (Error e) {
@@ -573,7 +581,7 @@ public class SragController {
 	public Iterable<Srag> getMunicipioResidencia(@PathVariable String munRes) {
 		List<Srag> sragLista = new ArrayList<>();
 		for(Srag srag : this.srag) {
-			if (srag.getId_mn_resi().contains(munRes)) {
+			if (srag.getIdMnResi().contains(munRes)) {
 				sragLista.add(srag);
 			}
 		}
@@ -587,12 +595,23 @@ public class SragController {
 	public Iterable<Srag> getHospital(@PathVariable String hospital) {
 		List<Srag> sragLista = new ArrayList<>();
 		for (Srag srag: this.srag) {
-			if (srag.getId_unidade().contains(hospital)) {
+			if (srag.getIdUnidade().contains(hospital)) {
 				sragLista.add(srag);
 			}	
 		}
 		if (sragLista.isEmpty()) {
 			throw new NotFoundException("Hospital não localizado!","Hosital: " + hospital);
+		}
+		return sragLista;
+	}
+	
+	@GetMapping("/data/fabcov/{fabcov}")
+	public Iterable<Srag> getFabCov(@PathVariable String fabcov) {
+		List<Srag> sragLista = new ArrayList<>();
+		for (Srag s: this.srag) {
+			if (s.getFabCov1().contentEquals(fabcov) || s.getFabCov2().contentEquals(fabcov)) {
+					sragLista.add(s);
+				}
 		}
 		return sragLista;
 	}
